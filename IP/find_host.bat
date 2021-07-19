@@ -1,6 +1,7 @@
 @echo off
+title Find alive hosts in LAN
 
-echo if you want to find 192.168.1.1 ~ 192.168.1.254
+echo If you want to find 192.168.1.1 ~ 192.168.1.254
 echo just input 192.168.1.[0] (default)
 echo note: just support netmask 255.255.255.0
 echo scan time about 2 minutes (4 hosts)
