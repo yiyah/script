@@ -19,9 +19,9 @@ for /f "delims=. tokens=1,2,3,4" %%i in ("%networkSegment%") do (
     echo.
 
     if %%i == 0 (echo input is invalid! & goto failed) else set i1=%%i
-    
+
     if %%j == 0 (echo input is invalid! & goto failed) else set i2=%%j
-    
+
     if %%k == 0 (echo input is invalid! & goto failed) else set i3=%%k
 )
 
@@ -33,7 +33,7 @@ for /l %%i in (1,1,254) do ping -w 2 -n 1 %i1%.%i2%.%i3%.%%i | find "TTL="
 set time_end=%time%
 
 :: get totalTime_minute
-if %time_end:~3,2% lss %time_begin:~3,2% (set /a totalTime_minute = %time_end:~3,2% + 60 - %time_begin:~3,2%) else set /a totalTime_minute = %time_end:~3,2% - %time_begin:~3,2% 
+if %time_end:~3,2% lss %time_begin:~3,2% (set /a totalTime_minute = %time_end:~3,2% + 60 - %time_begin:~3,2%) else set /a totalTime_minute = %time_end:~3,2% - %time_begin:~3,2%
 
 :: get totalTime_second
 if %time_end:~-5,2% lss %time_begin:~-5,2% (set /a totalTime_second = %time_end:~-5,2% + 60 - %time_begin:~-5,2% & set /a totalTime_minute = %totalTime_minute% - 1) else set /a totalTime_second = %time_end:~-5,2% - %time_begin:~-5,2%
