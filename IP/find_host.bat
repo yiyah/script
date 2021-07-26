@@ -2,11 +2,12 @@
 title Find alive hosts in LAN
 
 echo If you want to find 192.168.1.1 ~ 192.168.1.254
-echo just input 192.168.1.[0] (default)
+echo just input 192.168.1.0 (default)
 echo note: just support netmask 255.255.255.0
 echo scan time about 2 minutes (4 hosts)
 echo.
-echo Found the following IP in your system. Maybe helpful for you.
+call :set_color "Found the following IP in your system. Maybe helpful for you." 0e
+echo.
 call :showMyAdapter
 echo.
 
@@ -61,7 +62,18 @@ for /f "delims=:  tokens=1,3" %%i in ('ipconfig ^| findstr /n IPv4') do (
 
     rem show after finding the row where the adapter is
     for /f "tokens=1* delims=:" %%a in ('ipconfig^|findstr /n .*') do (
-        if %%a equ !adapter_line! echo %%b & echo !IP! & echo.
+        if %%a equ !adapter_line! echo %%b & call :set_color !IP! 0a & echo.
     )
+)
+goto :eof
+
+:set_color
+if not exist %1 (
+    set /p= <nul >%1
+    findstr /a:%2  %1*
+    del %1
+) else (
+    set /p=%1<nul
+    goto :eof
 )
 goto :eof
