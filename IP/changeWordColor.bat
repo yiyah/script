@@ -12,7 +12,12 @@ pause > nul
 
 
 :set_color
-set /p= <nul >%1
-findstr /a:%2   %1* 
-del %1
+if not exist %1 (
+    set /p= <nul >%1
+    findstr /a:%2  %1* 
+    del %1
+) else (
+    set /p=%1<nul
+    goto :eof
+)
 goto :eof
