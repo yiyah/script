@@ -1,4 +1,5 @@
 @echo off
+title Detect your system version
 
 rem get the system version
 if /i not "%os%"=="Windows_NT" (set OSver=not window os) else (
