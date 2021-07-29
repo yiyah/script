@@ -1,6 +1,4 @@
-# scripts
-
-Some simple and convenient scripts
+# Some simple and convenient scripts
 
 1. changeWordColor
     * 作用：给某句话设置颜色
